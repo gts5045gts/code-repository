@@ -1,0 +1,16 @@
+version: 0.0
+os: linux
+#install 과정 리눅스 내부에 프로젝트 파일이 톰켓으로 실행 되는곳으로 이동
+files:
+  - source: myapp.war
+    destination: /usr/local/tomcat/webapps/
+#아래 내용은 톰켓 서버 껐다 키는 과정
+hooks:
+  BeforeInstall:
+    - location: scripts/stop_tomcat.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: scripts/start_tomcat.sh
+      timeout: 300
+      runas: root
