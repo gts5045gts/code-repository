@@ -39,7 +39,7 @@ phases:
         file.uploadBaseLocation=/usr/local/tomcat/upload
         file.itemImgLocation=/personnel/img
 
-        #service.key=6cf7fabe8d592c5680ed84d3e1ffcfc159cbe41b6c8f858247e6f68919f18953
+        service.key=6cf7fabe8d592c5680ed84d3e1ffcfc159cbe41b6c8f858247e6f68919f18953
 
 
 
