@@ -120,6 +120,7 @@ public class InspectionService {
     }
     
     @Transactional
+//    @TrackLot(tableName = "input", pkColumnName = "in_id") // 입고 검사 전으로 이동
     public void verifyIncomingCount(String inId, Long acceptedCount, Long defectiveCount, String empId, String lotId, String inspectionType, String defectType, String remarks, String materialId) {
         // 1. INPUT 테이블에서 기존 in_count를 조회
     	Integer expectedCount = qualityMapper.findInCountByInId(inId);
@@ -170,6 +171,12 @@ public class InspectionService {
         } else {
             qualityMapper.updateInputStatusByInId(inId, "불량", 0L); // 불량만 있으면 '불량' 상태로 변경
         }
+        
+        // 입고 검사전 로트 생성으로 변경함
+//        if (newInspectionId != null) {
+//        	HttpSession session = SessionUtil.getSession();
+//            session.setAttribute("targetIdValue", inId);	
+//		}
     }
     
     @Transactional(readOnly = true)
